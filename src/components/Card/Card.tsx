@@ -10,45 +10,31 @@ export type CardProps = {
   onClick?: () => void;
 };
 
-const StyledCard = styled.div<CardProps>`
-  width: ${(props) => props.width || '300px'};
-  height: ${(props) => props.height || 'auto'};
+const StyledCard = styled.div<{ width?: string; height?: string }>`
+  width: ${({ width }) => width || '200px'};
+  height: ${({ height }) => height || '300px'};
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  background: #fff;
-  text-align: center;
-  cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-`;
-
-const CardImage = styled.img`
-  width: 100%;
-  height: auto;
-`;
-
-const CardContent = styled.div`
-  padding: 16px;
+  cursor: pointer;
 `;
 
 const CardTitle = styled.h3`
-  margin: 0;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 18px;
+  margin: 10px;
 `;
 
 const CardDescription = styled.p`
-  font-size: 1rem;
-  color: #666;
+  font-size: 14px;
+  margin: 10px;
 `;
 
 const Card: React.FC<CardProps> = ({ title, description, imageSrc, width, height, onClick }) => {
   return (
     <StyledCard width={width} height={height} onClick={onClick}>
-      {imageSrc && <CardImage src={imageSrc} alt={title} />}
-      <CardContent>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardContent>
+      {imageSrc && <img src={imageSrc} alt={title} style={{ width: '100%', height: 'auto' }} />}
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>{description}</CardDescription>
     </StyledCard>
   );
 };

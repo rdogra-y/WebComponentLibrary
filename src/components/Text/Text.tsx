@@ -8,10 +8,10 @@ export type TextProps = {
   weight?: string;
 };
 
-const StyledText = styled.p<TextProps>`
-  font-size: ${(props) => props.size || '16px'};
-  color: ${(props) => props.color || '#000'};
-  font-weight: ${(props) => props.weight || 'normal'};
+const StyledText = styled.p<{ color?: string; size?: string; weight?: string }>`
+  color: ${({ color }) => color || 'black'};
+  font-size: ${({ size }) => size || '16px'};
+  font-weight: ${({ weight }) => weight || 'normal'};
 `;
 
 const Text: React.FC<TextProps> = ({ content, color, size, weight }) => {

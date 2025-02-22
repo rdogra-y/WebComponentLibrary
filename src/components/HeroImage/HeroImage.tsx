@@ -24,7 +24,7 @@ const HeroContainer = styled.div<HeroImageProps>`
 `;
 
 const HeroImage: React.FC<HeroImageProps> = ({ src, alt, height, overlayText }) => {
-  return <HeroContainer src={src} height={height} aria-label={alt}>{overlayText}</HeroContainer>;
+  return <HeroContainer src={src} height={height} alt={alt} aria-label={alt}>{overlayText}</HeroContainer>;
 };
 
 export default HeroImage;

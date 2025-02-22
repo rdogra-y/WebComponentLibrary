@@ -4,4 +4,4 @@ export type HeroImageProps = {
     height?: string;
     overlayText?: string;
   };
-  
+  export {}; 

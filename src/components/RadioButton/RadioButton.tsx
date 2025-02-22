@@ -10,11 +10,11 @@ export type RadioButtonProps = {
   disabled?: boolean;
 };
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.label<{ disabled?: boolean }>`
   display: flex;
   align-items: center;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
 const StyledInput = styled.input`

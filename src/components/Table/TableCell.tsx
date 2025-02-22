@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export type TableCellProps = {
   children: React.ReactNode;
   align?: 'left' | 'center' | 'right';
+  colSpan?: number;
 };
 
 const StyledTableCell = styled.td<TableCellProps>`

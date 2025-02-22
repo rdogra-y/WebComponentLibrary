@@ -8,11 +8,9 @@ export type LabelProps = {
   htmlFor?: string;
 };
 
-const StyledLabel = styled.label<LabelProps>`
-  font-size: ${(props) => props.size || '16px'};
-  color: ${(props) => props.color || '#000'};
-  display: block;
-  margin-bottom: 5px;
+const StyledLabel = styled.label<{ color?: string; size?: string }>`
+  color: ${({ color }) => color || 'black'};
+  font-size: ${({ size }) => size || '14px'};
 `;
 
 const Label: React.FC<LabelProps> = ({ text, color, size, htmlFor }) => {

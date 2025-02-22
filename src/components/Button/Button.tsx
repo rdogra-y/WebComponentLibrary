@@ -7,7 +7,8 @@ export type ButtonProps = {
   onClick?: () => void;
 };
 
-const StyledButton = styled.button<ButtonProps>`
+// Ensure styled-components receives proper props
+const StyledButton = styled.button<{ disabled?: boolean }>`
   padding: 10px 20px;
   font-size: 16px;
   border: none;

@@ -5,7 +5,8 @@ export type TableProps = {
   };
   
   export type TableCellProps = {
-    children: React.ReactNode;
-    align?: 'left' | 'center' | 'right';
+    align?: "left" | "center" | "right";
+    colSpan?: number;
   };
   
+  export {};   

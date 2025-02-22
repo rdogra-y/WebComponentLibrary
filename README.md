@@ -44,3 +44,105 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# Web Component Library - Storybook
+
+This is a React-based UI component library built with Storybook and Docker.
+
+## 📖 Running Storybook
+
+Storybook is used to develop and test UI components in isolation.
+
+1. **Install Storybook**
+   
+   npx storybook@latest init
+  
+
+2. **Run Storybook**
+   
+   npm run storybook
+   
+   If the default port (6006) is unavailable, Storybook will suggest an alternative port (e.g., 6007, 6008).
+
+3. Open Storybook in the browser:  
+   - [http://localhost:6006](http://localhost:6006) 
+
+##  Running with Docker
+
+1. **Build the Docker Image**
+   docker build -t dogra_rakshita_coding_assignment12 .
+
+2. **Run the Docker Container**
+   docker run -p 8083:8083 --name dogra_rakshita_coding_assignment12 dogra_rakshita_coding_assignment12
+
+3. Open Storybook in the browser:
+   - [http://localhost:6006](http://localhost:6006)
+
+##  Creating UI Components with Storybook
+
+1. Inside `src/components`, create a new component folder, e.g., `Button`.
+2. Add a `Button.tsx` file with the component code.
+3. Create a `Button.stories.tsx` file for the Storybook integration.
+4. Restart Storybook to see the new component.
+
+Example `Button.tsx`:
+```tsx
+import React from 'react';
+import styled from 'styled-components';
+
+export type ButtonProps = {
+  label: string;
+  disabled?: boolean;
+  onClick?: () => void;
+};
+
+const StyledButton = styled.button<ButtonProps>`
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  background: ${({ disabled }) => (disabled ? '#ccc' : '#007BFF')};
+  color: white;
+  border-radius: 5px;
+`;
+
+const Button: React.FC<ButtonProps> = ({ label, disabled = false, onClick }) => {
+  return <StyledButton disabled={disabled} onClick={onClick}>{label}</StyledButton>;
+};
+
+export default Button;
+
+
+Example `Button.stories.tsx`:
+
+import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
+import Button, { ButtonProps } from './Button';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+
+const Template: StoryFn<ButtonProps> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  label: 'Primary Button',
+  disabled: false,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Disabled Button',
+  disabled: true,
+};
+```
+
+## 🚀 How to Run Locally
+
+1. **Clone the Repository**  
+   ```sh
+   git clone https://github.com/rdogra-y/WebComponentLibrary.git
+   cd WebComponentLibrary
