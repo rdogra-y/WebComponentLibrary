@@ -76,8 +76,6 @@ Storybook is used to develop and test UI components in isolation.
 2. **Run the Docker Container**
    docker run -p 8083:8083 --name dogra_rakshita_coding_assignment12 dogra_rakshita_coding_assignment12
 
-3. Open Storybook in the browser:
-   - [http://localhost:6006](http://localhost:6006)
 
 ##  Creating UI Components with Storybook
 
@@ -138,7 +136,7 @@ Disabled.args = {
   label: 'Disabled Button',
   disabled: true,
 };
-```
+
 
 ## 🚀 How to Run Locally
 
